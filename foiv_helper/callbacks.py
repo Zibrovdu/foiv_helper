@@ -3,7 +3,6 @@ import numpy as np
 from foiv_helper.load_data import load_bounds_roles
 
 
-
 def register_callbacks(app):
     @app.callback(
         Output('fio', 'options'),

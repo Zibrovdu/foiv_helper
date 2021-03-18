@@ -6,7 +6,6 @@ from foiv_helper.callbacks import register_callbacks
 from foiv_helper.load_cfg import Check_username_password
 
 
-
 app = dash.Dash(__name__, title='Полномочия и роли пользователей', external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 auth = dash_auth.BasicAuth(app, Check_username_password)
