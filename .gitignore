@@ -9,7 +9,6 @@ venv
 .git
 .idea
 assets
-venv
 *.xlsx
 foiv_helper/__pycache__
 

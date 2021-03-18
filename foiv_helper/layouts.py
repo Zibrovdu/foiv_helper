@@ -6,6 +6,7 @@ import dash_table
 from foiv_helper.load_data import load_bounds_roles
 
 
+
 def serve_layout():
     df = load_bounds_roles()
 

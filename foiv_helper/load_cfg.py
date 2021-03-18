@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 import configparser
 
+
 cfg_parser = configparser.ConfigParser()
 cfg_parser.read(f'settings.ini')
 

@@ -2,6 +2,7 @@ import pandas as pd
 from foiv_helper.load_cfg import connection_string
 
 
+
 def load_bounds_roles():
     """
     Синтаксис:
