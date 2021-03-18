@@ -8,7 +8,6 @@ venv
 .ssh
 .git
 .idea
-assets
 *.xlsx
 foiv_helper/__pycache__
 

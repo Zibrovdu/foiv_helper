@@ -1,0 +1,96 @@
+.banner {
+    height: 75px;
+    width/max-width: 1800px;
+    margin: 0 auto;
+    background-color: #1959d1;
+    border-radius: 2px;
+}
+
+.banner h2{
+    color: rgb(255, 255, 255);
+    padding-top: 10px;
+    margin-left: 2%;
+    display: inline-block;
+}
+
+
+.banner Img{
+    position: relative;
+    float: right;
+    right: 10px;
+    height: 75px;
+}
+.zagolovok {
+    height: 75px;
+    margin: 70px -10px 30px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+}
+.zagolovok h3{
+    color: black;
+    padding-top: 10px;
+    margin-left: 35%;
+    display: inline-block;
+}
+
+.dropdown {
+    width: 250px,
+    margin:  30px, 0px
+}
+
+.block_1 {
+    margin: 0 0 0 auto;
+    float:left;
+}
+
+.line_block {
+        background: #ebecf1;
+        float:left;
+        margin: 0 0 0 0;
+        text-align: center;
+        padding: 10px;
+        margin-left: 1%;
+        }
+
+.picker {
+    font-size: 1.4em;
+    font-family: "Arial";
+    font-color: rgb(34,39,128);
+}
+
+media screen and (max-width: 650px) {
+    .line_block {
+    width:  auto;}
+}
+
+.bblock {
+     display: inline-block; /*Задаем обтекание*/
+     margin-top: 40px;
+     /*line-height: 40px;/*Высота строки +  верт. центрирования текста*/
+     font-size: 20px;
+     margin: 0;
+     vertical-align: top;
+     height: 50px;
+     padding: 10px;
+    }
+
+.wrapper-dropdown-3 {
+/* Размер и позиционирование */
+    position: relative;
+    width: 290px;
+    margin: 0;
+    padding: 0px;
+    font-weight: bold;
+    color: #012e67;
+}
+.wrapper-dropdown-4 {
+/* Размер и позиционирование */
+    position: relative;
+    width: 200px;
+    margin: 0;
+    padding: 0px;
+    background: #b1d5fa;
+    border-radius: 1px;
+    font-weight: bold;
+    color: #012e67;
+}

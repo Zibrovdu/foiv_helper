@@ -6,8 +6,7 @@ def load_bounds_roles():
     """
     Синтаксис:
     ----------
-
-    load_bounds_roles()
+    **load_bounds_roles** ()
 
     Описание:
     ----------
@@ -15,7 +14,7 @@ def load_bounds_roles():
 
     Returns:
     ----------
-        **pandas.DataFrame**
+        **DataFrame**
     """
     df = pd.read_sql('bounds_roles', con=connection_string)
     df.columns = ['ФИО сотрудника', 'Организация (ФОИВ)', 'Отдел', 'Полномочие', 'Роль', 'Код роли доступа в ПОИБ',
