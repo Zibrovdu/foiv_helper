@@ -78,7 +78,7 @@ def serve_layout():
             html.H5(id='subs')
         ]),
         html.Div([
-            html.H5('Актуально на 05 марта 2021 года')
+            html.H5('Актуально на 19 марта 2021 года')
         ], style=dict(textAlign='right', padding='0 20px')),
         html.Div([
             dash_table.DataTable(id='bounds',
