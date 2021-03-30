@@ -3,11 +3,12 @@ import dash_core_components as dcc
 import dash_bootstrap_components as dbc
 import numpy as np
 import dash_table
-from foiv_helper.load_data import load_bounds_roles
+from foiv_helper.load_data import load_bounds_roles, get_upd_date
+from foiv_helper.load_cfg import connection_string
 
 
 def serve_layout():
-    df = load_bounds_roles()
+    df = load_bounds_roles(connection_string)
 
     units = [{'label': i, 'value': i} for i in np.sort(df['Отдел'].unique())]
     units.insert(0, dict(label='Все пользователи', value='Все пользователи'))
@@ -24,9 +25,6 @@ def serve_layout():
                  dbc.ModalBody(
                      html.Div([
                          html.Table([
-                             html.Tr([
-                                 html.Td('-', style=dict(background='rgb(204, 236, 255)')),
-                             ]),
                              html.Tr([
                                  html.Td('Администратор', style=dict(background='rgb(247, 143, 168)')),
                              ]),
@@ -78,7 +76,7 @@ def serve_layout():
             html.H5(id='subs')
         ]),
         html.Div([
-            html.H5('Актуально на 19 марта 2021 года')
+            html.H5(f'Актуально на {get_upd_date(connection_string)}')
         ], style=dict(textAlign='right', padding='0 20px')),
         html.Div([
             dash_table.DataTable(id='bounds',

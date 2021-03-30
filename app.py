@@ -10,7 +10,7 @@ app = dash.Dash(__name__, title='Полномочия и роли пользов
 server = app.server
 auth = dash_auth.BasicAuth(app, Check_username_password)
 
-app.layout = serve_layout()
+app.layout = serve_layout
 register_callbacks(app)
 
 if __name__ == '__main__':

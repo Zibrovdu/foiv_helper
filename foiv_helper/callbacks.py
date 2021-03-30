@@ -1,6 +1,7 @@
 from dash.dependencies import Input, Output, State
 import numpy as np
 from foiv_helper.load_data import load_bounds_roles
+from foiv_helper.load_cfg import connection_string
 
 
 def register_callbacks(app):
@@ -13,7 +14,7 @@ def register_callbacks(app):
          Input('fio', 'value'),
          Input('role', 'value')])
     def update_all(unit_name, fio_name, role_name):
-        df = load_bounds_roles()
+        df = load_bounds_roles(connection_string)
         if unit_name == 'Все пользователи':
             fio_list = [{'label': i, 'value': i} for i in np.sort(df['ФИО сотрудника'].unique())]
             role_list = [{'label': i, 'value': i} for i in np.sort(df['Роль'].unique())]
