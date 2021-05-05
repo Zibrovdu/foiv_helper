@@ -34,7 +34,7 @@ def get_upd_date(conn_string):
               'Ноября', 'Декабря']
     df = pd.read_sql("""
         SELECT pg_xact_commit_timestamp(xmin) 
-        FROM bounds_roles
+        FROM bounds_roles_new
         """, con=conn_string)
     upd_db_date = df.pg_xact_commit_timestamp.mean().strftime('%d %m %Y')
 
