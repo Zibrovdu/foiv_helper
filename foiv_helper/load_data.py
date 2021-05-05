@@ -16,8 +16,8 @@ def load_bounds_roles(conn_string):
         **DataFrame**
     """
     df = pd.read_sql("""
-        SELECT fio, org, unit, subs, role, bound, role_code 
-        FROM  bounds_roles
+        SELECT fio, org, unit, subs, role, bound, role_code
+        FROM  bounds_role_new
         """, con=conn_string)
     df.columns = ['ФИО сотрудника', 'Организация (ФОИВ)', 'Отдел', 'Подсистема', 'Роль', 'Полномочие',
                   'Код роли доступа в ПОИБ']

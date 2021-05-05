@@ -1,10 +1,11 @@
-import dash_html_components as html
-import dash_core_components as dcc
 import dash_bootstrap_components as dbc
-import numpy as np
+import dash_core_components as dcc
+import dash_html_components as html
 import dash_table
-from foiv_helper.load_data import load_bounds_roles, get_upd_date
+import numpy as np
+
 from foiv_helper.load_cfg import connection_string
+from foiv_helper.load_data import load_bounds_roles, get_upd_date
 
 
 def serve_layout():
@@ -16,36 +17,42 @@ def serve_layout():
     layout = html.Div([
         html.Div([
             html.Div([
-                html.Button("Легенда", id="open_legend",
-                            style=dict(float='right', position='relative', margin='0 auto')),
-            ], style=dict(padding='20px')),
+                html.Button("Легенда",
+                            id="open_legend",
+                            className='legend_btn'),
+            ], className='div_legend_btn'),
 
             dbc.Modal(
-                [dbc.ModalHeader("Легенда", style=dict(textAlign='center')),
+                [dbc.ModalHeader("Легенда"),
                  dbc.ModalBody(
                      html.Div([
                          html.Table([
                              html.Tr([
-                                 html.Td('Администратор', style=dict(background='rgb(247, 143, 168)')),
+                                 html.Td('Администратор',
+                                         style=dict(background='rgb(247, 143, 168)')),
                              ]),
                              html.Tr([
-                                 html.Td('Ввод данных', style=dict(background='rgb(255, 255, 204)')),
+                                 html.Td('Ввод данных',
+                                         style=dict(background='rgb(255, 255, 204)')),
                              ]),
                              html.Tr([
-                                 html.Td('Просмотр', style=dict(background='rgb(204, 255, 204)')),
+                                 html.Td('Просмотр',
+                                         style=dict(background='rgb(204, 255, 204)')),
                              ]),
                              html.Tr([
-                                 html.Td('Согласование', style=dict(background='rgb(247, 224, 244)')),
+                                 html.Td('Согласование',
+                                         style=dict(background='rgb(247, 224, 244)')),
                              ]),
                              html.Tr([
-                                 html.Td('Утверждение', style=dict(background='rgb(252, 195, 214)')),
+                                 html.Td('Утверждение',
+                                         style=dict(background='rgb(252, 195, 214)')),
                              ]),
                          ]),
-                     ], style=dict(background='#ebecf1')),
+                     ], className='backgrd_color'),
                  ),
                  dbc.ModalFooter(
-                     html.Button("Закрыть", id="close_legend")
-                 ),
+                     html.Button("Закрыть",
+                                 id="close_legend")),
                  ],
                 id="modal-scroll",
                 backdrop='static',
@@ -55,29 +62,44 @@ def serve_layout():
         ]),
         html.Br(),
         html.Div([
-            html.H5('Название отдела: ', style=dict(width='98%', margin='0 auto')),
-            dcc.Dropdown(id='unit_name', options=units, value='Все пользователи',
-                         style=dict(width='99%', margin='0 auto')),
+            html.H5('Название отдела: ',
+                    className='h5_dropdown'),
+            dcc.Dropdown(id='unit_name',
+                         options=units,
+                         value='Все пользователи',
+                         className='h5_dropdown'),
         ]),
         html.Br(),
         html.Div([
-            html.H5('ФИО сотрудника: ', style=dict(width='98%', margin='0 auto')),
-            dcc.Dropdown(id='fio', multi=True, placeholder='Выберите пользователей...',
-                         style=dict(width='99%', margin='0 auto'))
+            html.H5('ФИО сотрудника: ',
+                    className='h5_dropdown'),
+            dcc.Dropdown(id='fio',
+                         multi=True,
+                         placeholder='Выберите пользователей...',
+                         className='h5_dropdown')
         ]),
         html.Br(),
         html.Div([
-            html.H5('Роли пользователя', style=dict(width='98%', margin='0 auto')),
-            dcc.Dropdown(id='role', multi=True, placeholder='Выберите роль...',
-                         style=dict(width='99%', margin='0 auto'))
+            html.H5('Роли пользователя',
+                    className='h5_dropdown'),
+            dcc.Dropdown(id='role',
+                         multi=True,
+                         placeholder='Выберите роль...',
+                         className='h5_dropdown')
         ]),
         html.Br(),
         html.Div([
-            html.H5(id='subs')
+            html.H5('Подсистема',
+                    className='h5_dropdown'),
+            dcc.Dropdown(id='zp',
+                         multi=True,
+                         placeholder='Выберите...',
+                         className='h5_dropdown')
         ]),
+        html.Br(),
         html.Div([
             html.H5(f'Актуально на {get_upd_date(connection_string)}')
-        ], style=dict(textAlign='right', padding='0 20px')),
+        ], className='h5_update_data_label'),
         html.Div([
             dash_table.DataTable(id='bounds',
                                  style_as_list_view=False,
@@ -104,6 +126,6 @@ def serve_layout():
                                  export_format='xlsx',
                                  export_headers='display',
                                  )
-        ])
-    ], style=dict(background='#ebecf1'))
+        ], className='h5_dropdown')
+    ], className='backgrd_color')
     return layout
