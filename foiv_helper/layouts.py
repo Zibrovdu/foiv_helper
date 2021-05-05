@@ -4,12 +4,13 @@ import dash_html_components as html
 import dash_table
 import numpy as np
 
-from foiv_helper.load_cfg import connection_string
+from foiv_helper.load_cfg import connection_string, table_name
 from foiv_helper.load_data import load_bounds_roles, get_upd_date
 
 
 def serve_layout():
-    df = load_bounds_roles(connection_string)
+    df = load_bounds_roles(conn_string=connection_string,
+                           table=table_name)
 
     units = [{'label': i, 'value': i} for i in np.sort(df['Отдел'].unique())]
     units.insert(0, dict(label='Все пользователи', value='Все пользователи'))
@@ -80,7 +81,7 @@ def serve_layout():
         ]),
         html.Br(),
         html.Div([
-            html.H5('Роли пользователя',
+            html.H5('Роли пользователя:',
                     className='h5_dropdown'),
             dcc.Dropdown(id='role',
                          multi=True,
@@ -89,7 +90,7 @@ def serve_layout():
         ]),
         html.Br(),
         html.Div([
-            html.H5('Подсистема',
+            html.H5('Подсистема:',
                     className='h5_dropdown'),
             dcc.Dropdown(id='zp',
                          multi=True,
@@ -98,7 +99,7 @@ def serve_layout():
         ]),
         html.Br(),
         html.Div([
-            html.H5(f'Актуально на {get_upd_date(connection_string)}')
+            html.H5(f'Актуально на {get_upd_date(conn_string=connection_string, table=table_name)}')
         ], className='h5_update_data_label'),
         html.Div([
             dash_table.DataTable(id='bounds',
