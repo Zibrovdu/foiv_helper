@@ -1,21 +1,25 @@
 import pandas as pd
 
-from foiv_helper.load_cfg import table_name
-
 
 def load_bounds_roles(conn_string, table):
     """
     Синтаксис:
     ----------
-    **load_bounds_roles** ()
+    load_bounds_roles(conn_string, table)
 
     Описание:
     ----------
     Функция загружает в Датафрейм из базы данных данные по полномочиям и ролям пользователей.
 
+    Параметры:
+    ----------
+        conn_string: str - Строка подключения к базе данных.
+
+        table: str - Название таблицы в базе данных
+
     Returns:
     ----------
-        **DataFrame**
+        DataFrame
     """
     df = pd.read_sql(f"""
         SELECT fio, org, unit, subs, role, bound, role_code
@@ -32,6 +36,26 @@ def load_bounds_roles(conn_string, table):
 
 
 def get_upd_date(conn_string, table):
+    """
+    Синтаксис:
+    ----------
+    get_upd_date(conn_string, table)
+
+    Описание:
+    ----------
+    Функция извлекает из базы данных дату последнего коммита (дату обнлвения данных в базе) и преобразовывает ее в
+    удобночитаемый вид: Дата месяц год.
+
+    Параметры:
+    ----------
+        conn_string: str - Строка подключения к базе данных.
+
+        table: str - Название таблицы в базе данных
+
+    Returns:
+    ----------
+        String
+    """
     months = ['', 'Января', 'Февраля', 'Марта', 'Апреля', 'Мая', 'Июня', 'Июля', 'Августа', 'Сентября', 'Октября',
               'Ноября', 'Декабря']
     df = pd.read_sql(f"""

@@ -1,10 +1,10 @@
 import dash
 import dash_auth
 import dash_bootstrap_components as dbc
-from foiv_helper.layouts import serve_layout
-from foiv_helper.callbacks import register_callbacks
-from foiv_helper.load_cfg import Check_username_password
 
+from foiv_helper.callbacks import register_callbacks
+from foiv_helper.layouts import serve_layout
+from foiv_helper.load_cfg import Check_username_password
 
 app = dash.Dash(__name__,
                 title='Полномочия и роли пользователей',
