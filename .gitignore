@@ -10,4 +10,5 @@ venv
 .idea
 *.xlsx
 foiv_helper/__pycache__
-
+.fh_venv/
+fh_venv
