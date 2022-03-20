@@ -3,6 +3,7 @@ from dash.dependencies import Input, Output, State
 
 from foiv_helper.load_cfg import connection_string, table_name
 from foiv_helper.load_data import load_bounds_roles
+from foiv_helper.pages import page_load_data, main
 
 
 def register_callbacks(app):
@@ -109,3 +110,14 @@ def register_callbacks(app):
         if n1 or n2:
             return not is_open
         return is_open
+
+    @app.callback(
+        Output('page-content', 'children'),
+        Input('url', 'pathname'))
+    def display_page(pathname):
+        if pathname == '/page_load_data':
+            return page_load_data.layout
+        elif pathname == '/':
+            return main.layout
+        else:
+            return '404'
